@@ -1,8 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+PWORD_LENGTH_MIN = 8;
+PWORD_LENGTH_MAX = 128;
 
 function generatePassword() {
+    // Setup an object to make it easier to work with.
     var passwordGen = {
+        // Establish variables and set defaults.
         pwLength: 8,
         pwLower: true,
         pwUpper: true,
@@ -11,11 +15,17 @@ function generatePassword() {
     }
     console.log("generated babee");
 
-    prompt("Enter password length: ");  // Length of password 8 - 128 characters
-    prompt("Lowercase: ")  // Use lowercase characters
-    prompt("Uppercase: ")  // Use uppercase characters
-    prompt("Numeric: ")  // Use numeric characters
-    prompt("Special: ")  // Use special characters
+    var tempLength = prompt("Enter password length between "
+        + PWORD_LENGTH_MIN + " and "
+        + PWORD_LENGTH_MAX + " (currently " + passwordGen.pwLength + "): ");
+
+    // validate tempLengths
+
+    // Get the parameters from the user and update defaults.
+    passwordGen.pwLower = confirm("User lowercase characters? ("+ passwordGen.pwLower + ")");
+    passwordGen.pwUpper = confirm("User uppercase characters? ("+ passwordGen.pwUpper + ")");
+    passwordGen.pwNumeric = confirm("User numeric characters? ("+ passwordGen.pwNumeric + ")");
+    passwordGen.pwSpecial = confirm("User special characters? ("+ passwordGen.pwSpecial + ")");
 
     // Return the generated password for display
     return("okies");
