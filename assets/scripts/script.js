@@ -12,14 +12,24 @@ function generatePassword() {
         pwUpper: true,
         pwNumeric: true,
         pwSpecial: true,
+        getLength: function () {
+            return prompt("Enter password length between "
+                + PWORD_LENGTH_MIN + " and "
+                + PWORD_LENGTH_MAX + " (currently " + passwordGen.pwLength + "): ");
+        }
     }
-    console.log("generated babee");
 
-    var tempLength = prompt("Enter password length between "
-        + PWORD_LENGTH_MIN + " and "
-        + PWORD_LENGTH_MAX + " (currently " + passwordGen.pwLength + "): ");
+    // Collect and validate the password length.
+    var tempLength;
+    tempLength = passwordGen.getLength();
+    console.log(tempLength);
 
-    // validate tempLengths
+    // Cycle through until valid.
+    while (!parseInt(tempLength) || parseInt(tempLength) < PWORD_LENGTH_MIN || parseInt(tempLength) > PWORD_LENGTH_MAX) {
+        tempLength = passwordGen.getLength();
+        console.log("error dude");
+    }
+    passwordGen.pwLength = tempLength;
 
     // Get the parameters from the user and update defaults.
     passwordGen.pwLower = confirm("User lowercase characters? ("+ passwordGen.pwLower + ")");
