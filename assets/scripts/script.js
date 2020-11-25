@@ -53,22 +53,29 @@ function generatePassword() {
 
     // Use the selection ranges to determine individual characters to password.
     // loop through x number of times
-    var arrayToUse;
+
     while (counter < pwLength) {
-        // Select the array to use.
+        var arrayToUse;
+        // Select the array to use. If there's only one, use it.
         if (selectionPool.length > 1 ) {
-            arrayToUse = selectionPool[Math.floor(Math.random() * selectionPool.length) + 1];
-            counter++;
+            arrayToUse = selectionPool[Math.floor(Math.random() * selectionPool.length)];
         } else {
             arrayToUse = selectionPool[0]
-            counter++;
         }
+        arrayToUse = SELECTION_RANGES[arrayToUse];
+
+        // Check for multipart range (ie special characters). Extract a part at random to use.
+        if ( Array.isArray(arrayToUse) ) {
+            arrayToUse = arrayToUse[Math.floor(Math.random() * arrayToUse.length)];
+        }
+
+        console.log(arrayToUse);
+
+        counter++;
     }
-    console.log("Selection range: " + SELECTION_RANGES[arrayToUse], arrayToUse);
 
 
 
-    // otherwise select a range at random
 
     // does the range have additional ranges? Select which one to use at random also
 
