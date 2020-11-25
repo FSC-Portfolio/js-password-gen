@@ -65,11 +65,8 @@ function generatePassword() {
 
         // Check for multipart range (ie special characters). Extract a part at random to use.
         if ( Array.isArray(arrayToUse[0]) ) {
-            console.log("IS ARR: ", arrayToUse.length);
             arrayToUse = arrayToUse[Math.floor(Math.random() * arrayToUse.length)];
         }
-
-        console.log("ARR: ", arrayToUse);
         // Use the selected array to push a new character to the password array.
         var pwChar = Math.floor(Math.random() * (arrayToUse[1] - arrayToUse[0]) + arrayToUse[0])
         password += String.fromCharCode(pwChar);
