@@ -20,6 +20,7 @@ function generatePassword() {
     var pwParameters = [["lowercase", true], ["uppercase", true], ["numeric", true], ["special", true]];
     var pwLength = 8;
     var tempLength;
+    var password = [];
 
     // Setup an object to use some internal functions.
     var passwordGen = {
@@ -65,11 +66,17 @@ function generatePassword() {
         arrayToUse = SELECTION_RANGES[arrayToUse];
 
         // Check for multipart range (ie special characters). Extract a part at random to use.
-        if ( Array.isArray(arrayToUse) ) {
+        if ( Array.isArray(arrayToUse[0]) ) {
+            console.log("IS ARR: ", arrayToUse.length);
             arrayToUse = arrayToUse[Math.floor(Math.random() * arrayToUse.length)];
         }
 
-        console.log(arrayToUse);
+        console.log("ARR: ", arrayToUse);
+        // Use the selected array to push a new character to the password array.
+        var pwChar = Math.floor(Math.random() * (arrayToUse[1] - arrayToUse[0]) + arrayToUse[0])
+        console.log("CHAR: ", pwChar);
+
+        // console.log(arrayToUse);
 
         counter++;
     }
