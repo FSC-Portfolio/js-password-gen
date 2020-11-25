@@ -51,6 +51,26 @@ function generatePassword() {
     }
     console.log(selectionPool);
 
+    // Use the selection ranges to determine individual characters to password.
+    // loop through x number of times
+    var arrayToUse;
+    while (counter < pwLength) {
+        // Select the array to use.
+        if (selectionPool.length > 1 ) {
+            arrayToUse = selectionPool[Math.floor(Math.random() * selectionPool.length) + 1];
+            counter++;
+        } else {
+            arrayToUse = selectionPool[0]
+            counter++;
+        }
+    }
+    console.log("Selection range: " + SELECTION_RANGES[arrayToUse], arrayToUse);
+
+
+
+    // otherwise select a range at random
+
+    // does the range have additional ranges? Select which one to use at random also
 
     // Return the generated password for display
     var okies = String.fromCharCode(34);
