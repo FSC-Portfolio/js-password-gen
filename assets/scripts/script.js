@@ -41,6 +41,7 @@ function generatePassword() {
     pwLength = tempLength;
 
     // Get the parameters from the user and update defaults.
+    // TODO Add action for when user declines to use _any_ password parameters.
     var i=0;
     for (i=0; i < pwParameters.length; i++) {
         pwParameters[i][1] = confirm("Use "+ pwParameters[i][0] +" characters? ("+ pwParameters[i][1] +")");
@@ -50,11 +51,8 @@ function generatePassword() {
             selectionPool.push(i);
         }
     }
-    console.log(selectionPool);
 
     // Use the selection ranges to determine individual characters to password.
-    // loop through x number of times
-
     while (counter < pwLength) {
         var arrayToUse;
         // Select the array to use. If there's only one, use it.
