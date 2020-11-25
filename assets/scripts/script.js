@@ -3,9 +3,9 @@ var generateBtn = document.querySelector("#generate");
 PWORD_LENGTH_MIN = 8;
 PWORD_LENGTH_MAX = 128;
 SELECTION_RANGES = [
-    [48, 57],  // Numeric
     [97, 122],  // Lower
     [65, 90],  // Upper
+    [48, 57],  // Numeric
     [[33, 47], [58, 64], [91, 96]],  // Specials
 ]
 
@@ -20,7 +20,7 @@ function generatePassword() {
     var pwParameters = [["lowercase", true], ["uppercase", true], ["numeric", true], ["special", true]];
     var pwLength = 8;
     var tempLength;
-    var password = [];
+    var password = "";
 
     // Setup an object to use some internal functions.
     var passwordGen = {
@@ -74,10 +74,9 @@ function generatePassword() {
         console.log("ARR: ", arrayToUse);
         // Use the selected array to push a new character to the password array.
         var pwChar = Math.floor(Math.random() * (arrayToUse[1] - arrayToUse[0]) + arrayToUse[0])
-        console.log("CHAR: ", pwChar);
+        password += String.fromCharCode(pwChar);
 
-        // console.log(arrayToUse);
-
+        // Don't forget to increase the counter!
         counter++;
     }
 
@@ -87,9 +86,8 @@ function generatePassword() {
     // does the range have additional ranges? Select which one to use at random also
 
     // Return the generated password for display
-    var okies = String.fromCharCode(34);
-    // okies += String.fromCharCode(65 + 25);
-    return(okies);
+    // var okies = String.fromCharCode(34);
+    return(password);
 }
 
 // Write password to the #password input
