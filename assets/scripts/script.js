@@ -71,6 +71,8 @@ function generatePassword() {
         var pwChar = Math.floor(Math.random() * (arrayToUse[1] - arrayToUse[0]) + arrayToUse[0])
         password += String.fromCharCode(pwChar);
 
+        console.log(password);
+
         // Don't forget to increase the counter!
         counter++;
     }
