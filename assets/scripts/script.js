@@ -41,14 +41,21 @@ function generatePassword() {
     pwLength = tempLength;
 
     // Get the parameters from the user and update defaults.
-    // TODO Add action for when user declines to use _any_ password parameters.
     var i=0;
     for (i=0; i < pwParameters.length; i++) {
         pwParameters[i][1] = confirm("Use "+ pwParameters[i][0] +" characters? ("+ pwParameters[i][1] +")");
-        console.log(pwParameters[i][1]);
         // Add the corresponding random range to the selection pool.
         if (pwParameters[i][1]) {
             selectionPool.push(i);
+        }
+    }
+
+    // We still want to push out a password, so add all options to the selection pool.
+    if (selectionPool.length === 0 ){
+        var selPoolCounter = 0;
+        while (selPoolCounter < SELECTION_RANGES.length) {
+            selectionPool.push(selPoolCounter);
+            selPoolCounter ++;
         }
     }
 
@@ -75,13 +82,7 @@ function generatePassword() {
         counter++;
     }
 
-
-
-
-    // does the range have additional ranges? Select which one to use at random also
-
     // Return the generated password for display
-    // var okies = String.fromCharCode(34);
     return(password);
 }
 
