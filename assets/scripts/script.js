@@ -42,6 +42,7 @@ function generatePassword() {
 
     // Get the parameters from the user and update defaults.
     var i=0;
+    // TODO replace with foreach.
     for (i=0; i < pwParameters.length; i++) {
         pwParameters[i][1] = confirm("Use "+ pwParameters[i][0] +" characters? ("+ pwParameters[i][1] +")");
         // Add the corresponding random range to the selection pool.
